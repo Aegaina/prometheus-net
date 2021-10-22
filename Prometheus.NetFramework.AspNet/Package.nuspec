@@ -12,7 +12,7 @@
 
     <version>5.0.1-fix</version>
     <releaseNotes>Make the ASP.NET Exporter output the full value of the Content-Type header</releaseNotes>
-    <repository type="git" url="https://github.com/Aegaina/Common.git" />
+    <repository type="git" url="https://github.com/Aegaina/prometheus-net.git" />
 
     <dependencies>
         <group targetFramework="net4.6.1">
