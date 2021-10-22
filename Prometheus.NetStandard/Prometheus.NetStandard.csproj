@@ -1,42 +1,59 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-  </PropertyGroup>
+    <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <RootNamespace>Prometheus</RootNamespace>
+    <PropertyGroup>
+        <RootNamespace>Prometheus</RootNamespace>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\Resources\prometheus-net.snk</AssemblyOriginatorKeyFile>
 
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <LangVersion>preview</LangVersion>
+        <Nullable>enable</Nullable>
+        <WarningsAsErrors />
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
-    <SignAssembly>true</SignAssembly>
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>1701;1702;1705;1591</NoWarn>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        
+        <PackageId>prometheus-net</PackageId>
+        <PackageVersion>5.0.1-fix</PackageVersion>
+        <Authors>andrasm,qed-,lakario,sandersaares</Authors>
+        <Description>.NET client library for the Prometheus monitoring and alerting system</Description>
+        <Copyright>Copyright © prometheus-net developers</Copyright>
+        <PackageProjectUrl>https://github.com/prometheus-net/prometheus-net</PackageProjectUrl>
+        <PackageTags>metrics prometheus</PackageTags>
+        <PackageReleaseNotes>Make the ASP.NET Exporter output the full value of the Content-Type header</PackageReleaseNotes>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>prometheus-net-logo.png</PackageIcon>
+        <PackageIconUrl />
+        <RepositoryUrl>https://github.com/Aegaina/prometheus-net.git</RepositoryUrl>
+    </PropertyGroup>
 
-    <AssemblyOriginatorKeyFile>..\Resources\prometheus-net.snk</AssemblyOriginatorKeyFile>
+    <ItemGroup>
+        <Compile Include="..\Resources\SolutionAssemblyInfo.cs" Link="SolutionAssemblyInfo.cs" />
+    </ItemGroup>
 
-    <LangVersion>preview</LangVersion>
-    <Nullable>enable</Nullable>
-    <WarningsAsErrors />
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>1701;1702;1705;1591</NoWarn>
-  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.9" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="..\Resources\SolutionAssemblyInfo.cs" Link="SolutionAssemblyInfo.cs" />
-  </ItemGroup>
+    <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+        <Reference Include="System.Net.Http" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.9" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
-
+    <ItemGroup>
+        <None Include="..\Resources\Nuspec\prometheus-net-logo.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
 </Project>

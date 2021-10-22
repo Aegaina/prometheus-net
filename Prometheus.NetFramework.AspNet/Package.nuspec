@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="5.1">
+    <id>prometheus-net.NetFramework.AspNet</id>
+    <authors>sandersaares</authors>
+    <description>ASP.NET Web API exporter for Prometheus</description>
+    <projectUrl>https://github.com/prometheus-net/prometheus-net</projectUrl>
+    <license type="expression">MIT</license>
+    <tags>metrics prometheus aspnet webapi</tags>
+    <copyright>Copyright © prometheus-net developers</copyright>
+    <icon>images/prometheus-net-logo.png</icon>
+
+    <version>5.0.1-fix</version>
+    <releaseNotes>Make the ASP.NET Exporter output the full value of the Content-Type header</releaseNotes>
+    <repository type="git" url="https://github.com/Aegaina/Common.git" />
+
+    <dependencies>
+        <group targetFramework="net4.6.1">
+            <dependency id="Microsoft.AspNet.WebApi.Client" version="5.2.7"/>
+            <dependency id="Microsoft.AspNet.WebApi.Core" version="5.2.7" />
+
+            <dependency id="prometheus-net" version="5.0.1-fix" />
+        </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\$id$.pdb" target="lib\net461" />
+    <file src="..\Resources\Nuspec\prometheus-net-logo.png" target="images\" />
+  </files>
+</package>
