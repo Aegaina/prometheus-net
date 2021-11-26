@@ -23,8 +23,8 @@
         <NoWarn>1701;1702;1705;1591</NoWarn>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         
-        <PackageId>prometheus-net</PackageId>
-        <PackageVersion>5.0.1-fix</PackageVersion>
+        <PackageId>prometheus-net.Contrib.Aegaina</PackageId>
+        <PackageVersion>5.0.2</PackageVersion>
         <Authors>andrasm,qed-,lakario,sandersaares</Authors>
         <Description>.NET client library for the Prometheus monitoring and alerting system</Description>
         <Copyright>Copyright © prometheus-net developers</Copyright>
