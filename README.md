@@ -540,9 +540,9 @@ The above snippet exposes metrics on the `/metrics` URL.
 And then register the `PrometheusHttpCollector` module in your `web.config` file:
 ```xml
 <system.webServer>
-	<modules>
-		<add name="PrometheusHttpCollector" type="Prometheus.HttpCollector, Prometheus.Contrib.Aegaina.NetFramework.AspNet" />
-	</modules>
+    <modules>
+        <add name="PrometheusHttpCollector" type="Prometheus.HttpCollector, Prometheus.Contrib.Aegaina.NetFramework.AspNet" />
+    </modules>
 </system.webServer>
 ```
 
