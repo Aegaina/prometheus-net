@@ -35,6 +35,7 @@
         <PackageIcon>prometheus-net-logo.png</PackageIcon>
         <PackageIconUrl />
         <RepositoryUrl>https://github.com/Aegaina/prometheus-net.git</RepositoryUrl>
+        <AssemblyName>Prometheus.Contrib.Aegaina.NetStandard</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

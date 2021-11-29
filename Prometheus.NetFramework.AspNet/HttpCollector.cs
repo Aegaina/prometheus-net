@@ -14,7 +14,7 @@ namespace Prometheus
     /// <remarks>
     /// Reference code: https://github.com/rocklan/prometheus-net.AspNet/blob/master/src/Prometheus.AspNet/Classes/PrometheusHttpRequestModule.cs
     /// </remarks>
-    public class PrometheusHttpCollector : IHttpModule
+    public class HttpCollector : IHttpModule
     {
         private const string REQUEST_TIMER_KEY = "Prometheus.HttpRequest.Timer";
 
@@ -41,7 +41,7 @@ namespace Prometheus
         /// <summary>
         /// Destructor
         /// </summary>
-        ~PrometheusHttpCollector()
+        ~HttpCollector()
         {
             // Do not re-create Dispose clean-up code here.
             // Calling Dispose(false) is optimal in terms of

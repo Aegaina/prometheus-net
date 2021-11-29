@@ -21,7 +21,7 @@ Some specialized subsets of functionality require more modern runtimes:
 Related projects:
 
 * [prometheus-net.DotNetRuntime](https://github.com/djluck/prometheus-net.DotNetRuntime) instruments .NET Core apps to export metrics on .NET Core performance.
-* [prometheus-net.AspNet](https://github.com/rocklan/prometheus-net.AspNet) instruments ASP.NET full framework apps to export metrics on performance.
+<!--* [prometheus-net.AspNet](https://github.com/rocklan/prometheus-net.AspNet) instruments ASP.NET full framework apps to export metrics on performance.-->
 * [prometheus-net.SystemMetrics](https://github.com/Daniel15/prometheus-net.SystemMetrics) exports various system metrics such as CPU usage, disk usage, etc.
 * [prometheus-net/docker_exporter](https://github.com/prometheus-net/docker_exporter) exports metrics about a Docker installation.
 * [prometheus-net/tzsp_packetstream_exporter](https://github.com/prometheus-net/tzsp_packetstream_exporter) exports metrics about the data flows found in a stream of IPv4 packets.
@@ -73,9 +73,9 @@ More complex patterns may also be used (e.g. combining with dependency injection
 
 # Installation
 
-Nuget package for general use and metrics export via HttpListener or to Pushgateway: [prometheus-net](https://www.nuget.org/packages/prometheus-net)
+Nuget package for general use and metrics export via HttpListener or to Pushgateway: [prometheus-net.Contrib.Aegaina](https://github.com/Aegaina/prometheus-net/packages/1121613)
 
->Install-Package prometheus-net
+>Install-Package prometheus-net.Contrib.Aegaina
 
 Nuget package for ASP.NET Core middleware and stand-alone Kestrel metrics server: [prometheus-net.AspNetCore](https://www.nuget.org/packages/prometheus-net.AspNetCore)
 
@@ -89,9 +89,9 @@ Nuget package for ASP.NET Core gRPC integration: [prometheus-net.AspNetCore.Grpc
 
 >Install-Package prometheus-net.AspNetCore.Grpc
 
-Nuget package for ASP.NET Web API middleware on .NET Framework: [prometheus-net.NetFramework.AspNet](https://www.nuget.org/packages/prometheus-net.NetFramework.AspNet)
+Nuget package for ASP.NET Web API middleware on .NET Framework: [prometheus-net.Contrib.Aegaina.NetFramework.AspNet](https://github.com/Aegaina/prometheus-net/packages/1121614)
 
->Install-Package prometheus-net.NetFramework.AspNet
+>Install-Package prometheus-net.Contrib.Aegaina.NetFramework.AspNet
 
 
 # Quick start
@@ -537,7 +537,16 @@ protected void Application_Start(object sender, EventArgs e)
 
 The above snippet exposes metrics on the `/metrics` URL.
 
-The `AspNetMetricServer` class is provided by the `prometheus-net.NetFramework.AspNet` NuGet package.
+And then register the `PrometheusHttpCollector` module in your `web.config` file:
+```xml
+<system.webServer>
+	<modules>
+		<add name="PrometheusHttpCollector" type="Prometheus.HttpCollector, Prometheus.Contrib.Aegaina.NetFramework.AspNet" />
+	</modules>
+</system.webServer>
+```
+
+The `AspNetMetricServer` class and the `HttpCollector` class are provided by the `prometheus-net.Contrib.Aegaina.NetFramework.AspNet` NuGet package.
 
 # Kestrel stand-alone server
 

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Prometheus</RootNamespace>
-    <AssemblyName>Prometheus.NetFramework.AspNet</AssemblyName>
+    <AssemblyName>Prometheus.Contrib.Aegaina.NetFramework.AspNet</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -61,7 +61,7 @@
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AspNetMetricServer.cs" />
-    <Compile Include="PrometheusHttpCollector.cs" />
+    <Compile Include="HttpCollector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
