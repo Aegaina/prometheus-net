@@ -18,7 +18,7 @@
         <group targetFramework="net4.6.1">
             <dependency id="Microsoft.AspNet.WebApi.Client" version="5.2.7"/>
             <dependency id="Microsoft.AspNet.WebApi.Core" version="5.2.7" />
-            <dependency id="prometheus-net" version="5.0.2" />
+            <dependency id="prometheus-net.Contrib.Aegaina" version="5.0.2" />
         </group>
     </dependencies>
   </metadata>
