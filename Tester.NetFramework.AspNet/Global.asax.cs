@@ -8,6 +8,7 @@ namespace Tester.NetFramework.AspNet
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             AspNetMetricServer.RegisterRoutes(GlobalConfiguration.Configuration);
         }
     }

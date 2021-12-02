@@ -67,6 +67,9 @@ namespace Prometheus
         /// </summary>
         private void Application_BeginRequest(object sender, EventArgs e)
         {
+            /*Trace.Write("Begin\t");
+            Trace.WriteLine(HttpContext.Current.Request.Url.ToString());*/
+
             httpRequestsInProgress.Inc();
 
             if (HttpContext.Current != null)
@@ -87,19 +90,23 @@ namespace Prometheus
 
             if (HttpContext.Current != null)
             {
+                /*Trace.Write("End\t\t");
+                Trace.Write(HttpContext.Current.Request.Url.ToString());
+                Trace.Write("\t[");
+                Trace.Write(HttpContext.Current.Response.StatusCode);
+                Trace.WriteLine(']');*/
+
+                string code = HttpContext.Current.Response.StatusCode.ToString();
+                string method = HttpContext.Current.Request.HttpMethod;
+                string path = HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath;
+                httpRequestsTotal.WithLabels(code, method, path).Inc();
+
                 Stopwatch timer = HttpContext.Current.Items[REQUEST_TIMER_KEY] as Stopwatch;
                 if (timer != null)
                 {
                     try
                     {
                         timer.Stop();
-
-                        string code = HttpContext.Current.Response.StatusCode.ToString();
-                        string method = HttpContext.Current.Request.HttpMethod;
-                        string path = HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath;
-
-                        httpRequestsTotal.WithLabels(code, method, path).Inc();
-
                         double timeTakenSecs = timer.ElapsedMilliseconds / 1000d;
                         httpRequestsDuration.WithLabels(code, method, path).Observe(timeTakenSecs);
                     }
